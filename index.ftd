@@ -1,40 +1,158 @@
--- ds.page: Welcome to doc-site
+
+-- home-page:
+src: $assets.files.assets.bg.jpg
+
+-- main: Ganesh S Salunke
+src: $assets.files.assets.ganesh.jpeg
+
+Senior Manager Frontend
+
+-- button: Youtube
+link: https://www.youtube.com/channel/UCz472zD5zQOKv6jcq6mYgKA
+
+-- button: linkedIn
+link: https://www.linkedin.com/in/ganesh-s-891174ab/
+
+-- button: Github
+link: https://github.com/gsalunke
+
+-- end: home-page
 
 
-⚡️ `doc-site` will help you create a beautiful documentation site in no time.
-
-It provides out-of-the-box documentation features that can be used to create any
-kind of site(personal website, blog, etc).
-
-[Click here](https://fastn-community.github.io/doc-site/) to read doc-site
-documentation.
-
--- ds.h3: 🚀 Fast Track 
-
-Create your first fastn [web-site](https://fastn.com/expander/hello-world/-/build/) 
-project in just 5 minutes!
-
--- ds.h3: 🌟 Whats next?
-
-Create your first page. 
-[Click here to know more](https://fastn-community.github.io/doc-site/components/page/).
-
--- ds.h3: 👀 Want to learn more?
-
-Feel free to check [our expander course](https://fastn.com/expander/) or jump
-into our [FifthTry Discord server](https://discord.gg/bucrdvptYd).
 
 
--- ds.h3: 🎯 Used by?
 
-Our all documentation sites uses this `doc-site` theme.
 
-- [fastn.com](https://fastn.com/home/)
-- [FifthTry.com](https://www.fifthtry.com/)
 
--- ds.h2: Learn fastn and become a pro?
 
-You are one click away, just check [our documentation](https://fastn.com/) and 
-dont forget to jump into our [FifthTry Discord server](https://discord.gg/bucrdvptYd).
 
--- end: ds.page
+
+-- component home-page:
+ftd.background-image src: 
+children wrapper:
+
+-- ftd.column:
+width: fill-container
+height: hug-content
+align-content:center
+background.image: $home-page.src
+padding-bottom.px: 100
+
+
+-- ftd.column:
+spacing: space-between
+children: $home-page.wrapper
+
+-- end: ftd.column
+
+-- end: ftd.column
+
+-- end: home-page
+
+
+
+
+-- component main:
+caption title: Name 
+body body: Role
+ftd.image-src src: 
+
+-- ftd.column:
+width: fill-container
+padding.px: 50
+align-content: center
+spacing: space-between
+margin-top.px: 80
+
+
+-- ftd.image: 
+src: $main.src
+height.fixed.px: 200 
+width.fixed.px: 200 
+margin-top.px: 42
+border-color: $inherited.colors.border-strong
+border-radius.px: 15
+border-width.px: 5
+
+
+-- ftd.text: $main.title
+role: $inherited.types.heading-medium
+
+-- ftd.text: $main.body
+role: $inherited.types.copy-regular
+
+
+-- end: ftd.column
+
+-- end: main
+
+
+
+
+
+
+
+
+
+
+-- component button:
+caption title:
+optional string link:
+ftd.color text-color: $inherited.colors.text-strong
+ftd.color bg-color: $inherited.colors.background.base
+ftd.color border-color: $inherited.colors.border-strong
+optional ftd.shadow hover-shadow:
+boolean $is-hover: false
+
+-- ftd.text: $button.title
+link: $button.link
+border-width.px: 2
+margin-top.px: 25
+padding.px: 10
+border-radius.px: 10
+min-width.fixed.px: 400
+style: bold
+text-align: center
+color: $button.text-color
+role: $inherited.types.copy-regular
+background.solid: $button.bg-color
+border-color: $button.border-color
+shadow if { button.is-hover }: $button.hover-shadow
+$on-mouse-enter$: $ftd.set-bool($a = $button.is-hover, v = true)
+$on-mouse-leave$: $ftd.set-bool($a = $button.is-hover, v = false)
+
+-- end: button
+
+
+
+-- ftd.color monochrome-dark:
+light: black
+dark: white
+
+-- ftd.color monochrome-light:
+;;ftd color variable
+light: white
+dark: black
+
+-- ftd.color shadow-color:
+light: #cae9ee
+dark: #e4b0ac
+
+-- ftd.shadow s:
+color: $shadow-color
+x-offset.px: 0
+y-offset.px: 0
+blur.px: 50
+spread.px: 7
+
+
+-- ftd.background-image bg-image:
+src: $home-page.src
+repeat: no-repeat
+position: center
+size: cover
+
+/all calling inside the home-page
+home-page component will have a child wrapper
+No calling inside a component
+No static variable
